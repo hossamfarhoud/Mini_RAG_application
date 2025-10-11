@@ -15,7 +15,7 @@ $ conda create -n mini-rag python=3.8
 ```
 3) Activate the environment:
 ```bash
-$ conda activate mini-rag
+$ conda activate Mini-RAG
 ```
 
 ### (Optional) Setup you command line interface for better readability
