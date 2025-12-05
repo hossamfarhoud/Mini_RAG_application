@@ -2,14 +2,18 @@ from .BaseController import BaseController
 from pathlib import Path
 import re
 
+
 class ProjectController(BaseController):
     def __init__(self):
         super().__init__()
 
     @staticmethod
-    def _sanitize_project_id(pid: str) -> str:
+    def _sanitize_project_id(pid) -> str:
+        # Convert to string if it's an int
+        pid = str(pid) if pid is not None else ""
+        
         # Remove spaces, newline (\n), and carriage return (\r)
-        pid = (pid or "").strip()
+        pid = pid.strip()
         if not pid:
             raise ValueError("project_id is required")
 
@@ -19,7 +23,7 @@ class ProjectController(BaseController):
 
         return pid
 
-    def get_project_path(self, project_id: str) -> str:
+    def get_project_path(self, project_id) -> str:
         # Sanitize project_id to ensure it's safe for file system use
         pid = self._sanitize_project_id(project_id)
 
